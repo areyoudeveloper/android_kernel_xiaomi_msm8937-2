@@ -759,12 +759,16 @@ static struct clk_freq_tbl ftbl_gcc_oxili_gfx3d_clk_8937[] = {
 	F_SLEW( 216000000, FIXED_CLK_SRC, gpll6_aux,	5,	0,	0),
 	F_SLEW( 228570000, FIXED_CLK_SRC, gpll0,	3.5,	0,	0),
 	F_SLEW( 240000000, FIXED_CLK_SRC, gpll6_aux,	4.5,	0,	0),
+	F_SLEW( 259200000, 1296000000,	  gpll3,	2.5,	0,	0),
 	F_SLEW( 266670000, FIXED_CLK_SRC, gpll0,	3,	0,	0),
-	F_SLEW( 300000000, 600000000,	  gpll3,	1,	0,      0),
 	F_SLEW( 320000000, FIXED_CLK_SRC, gpll0,	2.5,	0,	0),
+	F_SLEW( 355200000, 710400000,	  gpll3,	1,	0,	0),
 	F_SLEW( 375000000, 750000000,	  gpll3,	1,	0,	0),
 	F_SLEW( 400000000, FIXED_CLK_SRC, gpll0,	2,	0,	0),
 	F_SLEW( 450000000, 900000000,	  gpll3,	1,	0,	0),
+	F_SLEW( 510000000, 1020000000,	  gpll3,	1,	0,	0),
+	F_SLEW( 560000000, 1120000000,	  gpll3,	1,	0,	0),
+	F_SLEW( 650000000, 1300000000,	  gpll3,	1,	0,	0),
 	F_END
 };
 
@@ -801,13 +805,16 @@ static struct clk_freq_tbl ftbl_gcc_oxili_gfx3d_clk_8937_475MHz[] = {
 	F_SLEW( 216000000, FIXED_CLK_SRC, gpll6_aux,	5,	0,	0),
 	F_SLEW( 228570000, FIXED_CLK_SRC, gpll0,	3.5,	0,	0),
 	F_SLEW( 240000000, FIXED_CLK_SRC, gpll6_aux,	4.5,	0,	0),
+	F_SLEW( 259200000, 1296000000,	  gpll3,	2.5,	0,	0),
 	F_SLEW( 266670000, FIXED_CLK_SRC, gpll0,	3,	0,	0),
-	F_SLEW( 300000000, 600000000,	  gpll3,	1,	0,	0),
 	F_SLEW( 320000000, FIXED_CLK_SRC, gpll0,	2.5,	0,	0),
+	F_SLEW( 355200000, 710400000,	  gpll3,	1,	0,	0),
 	F_SLEW( 375000000, 750000000,	  gpll3,	1,	0,	0),
 	F_SLEW( 400000000, FIXED_CLK_SRC, gpll0,	2,	0,	0),
 	F_SLEW( 450000000, 900000000,	  gpll3,	1,	0,	0),
-	F_SLEW( 475000000, 950000000,	  gpll3,	1,	0,	0),
+	F_SLEW( 510000000, 1020000000,	  gpll3,	1,	0,	0),
+	F_SLEW( 560000000, 1120000000,	  gpll3,	1,	0,	0),
+	F_SLEW( 650000000, 1300000000,	  gpll3,	1,	0,	0),
 	F_END
 };
 
