@@ -165,6 +165,22 @@ config DEVFREQ_GOV_QCOM_ADRENO_TZ
 	   governor is unlikely to be useful for other
 	   devices.
 
+config ADRENO_IDLER
+	tristate "MSM Adreno idler"
+	depends on DEVFREQ_GOV_QCOM_ADRENO_TZ
+	help
+	  Uses a different calculation method on top of Adreno TZ
+	  just for calculating frequency for idle to reduce the
+	  wasted power coming from stock Adreno TZ while
+	  maintaining high-performance.
+
+config SIMPLE_GPU_ALGORITHM
+	bool "Simple GPU algorithm"
+	depends on DEVFREQ_GOV_QCOM_ADRENO_TZ
+	help
+	  Simple user configurable GPU controlling processing algorithm,
+	  however maybe not working well in kernel4.9.
+	   
 config DEVFREQ_GOV_QCOM_GPUBW_MON
 	tristate "GPU BW voting governor"
 	depends on DEVFREQ_GOV_QCOM_ADRENO_TZ
