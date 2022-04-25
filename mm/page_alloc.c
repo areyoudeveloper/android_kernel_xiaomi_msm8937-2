@@ -3732,9 +3732,6 @@ retry_cpuset:
 
 	if (gfp_mask & __GFP_KSWAPD_RECLAIM) {
 		if (!woke_kswapd) {
-
-			atomic_inc(&pgdat->kswapd_waiters);
-
 			atomic_long_inc(&kswapd_waiters);
 			woke_kswapd = true;
 		}
