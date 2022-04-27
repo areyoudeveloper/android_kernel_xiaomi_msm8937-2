@@ -8,7 +8,14 @@
 #include <linux/devfreq_boost.h>
 #include <linux/fb.h>
 #include <linux/input.h>
+#include <module.h>
 #include <linux/kthread.h>
+static unsigned int wake_boost_duration = 1000;
+module_param_named(devfreq_boost_wake_boost_duration, wake_boost_duration, uint, 0664);
+static unsigned int input_boost_duration = 1000;
+module_param_named(devfreq_boost_input_boost_duration, input_boost_duration, uint, 0664);
+static bool cpubw_boost = 1;
+module_param_named(devfreq_boost_cpubw_boost, cpubw_boost, uint, 0664);
 
 enum {
 	SCREEN_OFF,
@@ -48,7 +55,7 @@ static void devfreq_max_unboost(struct work_struct *work);
 
 static struct df_boost_drv df_boost_drv_g __read_mostly = {
 	BOOST_DEV_INIT(df_boost_drv_g, DEVFREQ_MSM_CPUBW,
-		       CONFIG_DEVFREQ_MSM_CPUBW_BOOST_FREQ)
+		       cpubw_boost)
 };
 
 static void __devfreq_boost_kick(struct boost_dev *b)
@@ -58,7 +65,7 @@ static void __devfreq_boost_kick(struct boost_dev *b)
 
 	set_bit(INPUT_BOOST, &b->state);
 	if (!mod_delayed_work(system_unbound_wq, &b->input_unboost,
-		msecs_to_jiffies(CONFIG_DEVFREQ_INPUT_BOOST_DURATION_MS)))
+		msecs_to_jiffies(input_boost_duration)))
 		wake_up(&b->boost_waitq);
 }
 
@@ -192,7 +199,7 @@ static int fb_notifier_cb(struct notifier_block *nb, unsigned long action,
 		if (*blank == FB_BLANK_UNBLANK) {
 			clear_bit(SCREEN_OFF, &b->state);
 			__devfreq_boost_kick_max(b,
-				CONFIG_DEVFREQ_WAKE_BOOST_DURATION_MS);
+				wake_boost_duration);
 		} else {
 			set_bit(SCREEN_OFF, &b->state);
 			wake_up(&b->boost_waitq);
@@ -285,7 +292,7 @@ static struct input_handler devfreq_boost_input_handler = {
 	.name		= "devfreq_boost_handler",
 	.id_table	= devfreq_boost_ids
 };
-
+EXPORT_SYMBOL(devfreq_boost);
 static int __init devfreq_boost_init(void)
 {
 	struct df_boost_drv *d = &df_boost_drv_g;
