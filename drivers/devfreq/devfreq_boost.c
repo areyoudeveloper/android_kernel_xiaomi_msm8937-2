@@ -8,7 +8,7 @@
 #include <linux/devfreq_boost.h>
 #include <linux/fb.h>
 #include <linux/input.h>
-#include <module.h>
+#include <linux/module.h>
 #include <linux/kthread.h>
 static unsigned int wake_boost_duration = 1000;
 module_param_named(devfreq_boost_wake_boost_duration, wake_boost_duration, uint, 0664);
