@@ -14,7 +14,7 @@ static unsigned int wake_boost_duration = 1000;
 module_param_named(devfreq_boost_wake_boost_duration, wake_boost_duration, uint, 0664);
 static unsigned int input_boost_duration = 1000;
 module_param_named(devfreq_boost_input_boost_duration, input_boost_duration, uint, 0664);
-static bool cpubw_boost = 1;
+int cpubw_boost = 1;
 module_param_named(devfreq_boost_cpubw_boost, cpubw_boost, uint, 0664);
 
 enum {
