@@ -18,7 +18,7 @@ module_param_named(devfreq_boost_input_boost_duration, input_boost_duration, uin
 int devfreq_boost(int wake, int input, size_t count) {
 
     wake = wake_boost_duration;
-    input = input_boost_duration
+    input = input_boost_duration;
     
     if (wake < 0 || wake > 1000)
 		wake_boost_duration = 500;
