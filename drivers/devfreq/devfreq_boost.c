@@ -26,7 +26,7 @@ int devfreq_boost(int wake, int input, size_t count) {
 	if (input < 0 || input > 1000)
 		input_boost_duration = 150;
 
-    return count
+    return count;
 }
 
 EXPORT_SYMBOL(devfreq_boost);
