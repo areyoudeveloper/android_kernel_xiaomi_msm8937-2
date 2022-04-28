@@ -14,7 +14,14 @@ static unsigned int wake_boost_duration = 1000;
 module_param_named(devfreq_boost_wake_boost_duration, wake_boost_duration, uint, 0664);
 static unsigned int input_boost_duration = 1000;
 module_param_named(devfreq_boost_input_boost_duration, input_boost_duration, uint, 0664);
+int devfreq_boost() {
+if (wake_boost_duration < 0 || wake_boost_duration > 1000)
+		wake_boost_duration = 500;
 
+	if (input_boost_duration < 0 || input_boost_duration > 1000)
+		input_boost_duration = 150;
+};
+EXPORT_SYMBOL(devfreq_boost);
 enum {
 	SCREEN_OFF,
 	INPUT_BOOST,
@@ -53,7 +60,7 @@ static void devfreq_max_unboost(struct work_struct *work);
 
 static struct df_boost_drv df_boost_drv_g __read_mostly = {
 	BOOST_DEV_INIT(df_boost_drv_g, DEVFREQ_MSM_CPUBW,
-		       DEVFREQ_MSM_CPUBW_BOOST_FREQ)
+		       CONFIG_DEVFREQ_MSM_CPUBW_BOOST_FREQ)
 };
 
 static void __devfreq_boost_kick(struct boost_dev *b)
@@ -290,7 +297,7 @@ static struct input_handler devfreq_boost_input_handler = {
 	.name		= "devfreq_boost_handler",
 	.id_table	= devfreq_boost_ids
 };
-EXPORT_SYMBOL(devfreq_boost);
+
 static int __init devfreq_boost_init(void)
 {
 	struct df_boost_drv *d = &df_boost_drv_g;
