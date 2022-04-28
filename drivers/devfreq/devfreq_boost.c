@@ -14,8 +14,6 @@ static unsigned int wake_boost_duration = 1000;
 module_param_named(devfreq_boost_wake_boost_duration, wake_boost_duration, uint, 0664);
 static unsigned int input_boost_duration = 1000;
 module_param_named(devfreq_boost_input_boost_duration, input_boost_duration, uint, 0664);
-int cpubw_boost = 1;
-module_param_named(devfreq_boost_cpubw_boost, cpubw_boost, uint, 0664);
 
 enum {
 	SCREEN_OFF,
@@ -55,7 +53,7 @@ static void devfreq_max_unboost(struct work_struct *work);
 
 static struct df_boost_drv df_boost_drv_g __read_mostly = {
 	BOOST_DEV_INIT(df_boost_drv_g, DEVFREQ_MSM_CPUBW,
-		       cpubw_boost)
+		       DEVFREQ_MSM_CPUBW_BOOST_FREQ)
 };
 
 static void __devfreq_boost_kick(struct boost_dev *b)
