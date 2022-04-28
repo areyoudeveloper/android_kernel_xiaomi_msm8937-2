@@ -15,7 +15,7 @@ module_param_named(devfreq_boost_wake_boost_duration, wake_boost_duration, uint,
 static unsigned int input_boost_duration = 1000;
 module_param_named(devfreq_boost_input_boost_duration, input_boost_duration, uint, 0664);
 
-int devfreq_boost(int wake, int input) {
+int devfreq_boost(int wake, int input, size_t count) {
 
     wake = wake_boost_duration;
     input = input_boost_duration
@@ -25,6 +25,8 @@ int devfreq_boost(int wake, int input) {
 
 	if (input < 0 || input > 1000)
 		input_boost_duration = 150;
+
+    return count
 }
 
 EXPORT_SYMBOL(devfreq_boost);
