@@ -4,14 +4,28 @@
  */
 
 #define pr_fmt(fmt) "devfreq_boost: " fmt
-
+/*
+ * Devfreq Boost - Boost devfreq based devices
+ *
+ * Boosts enumerated devfreq devices upon input, and allows for boosting
+ * specific devfreq devices on other custom events. The boost frequencies
+ * for this driver should be set so that frame drops are near-zero at the
+ * boosted frequencies and power consumption is minimized at said
+ * frequencies. The goal of this driver is to provide an interface to
+ * achieve optimal device performance by requesting boosts on key events,
+ * such as when a frame is ready to rendered to the display.
+*/
 #include <linux/devfreq_boost.h>
 #include <linux/fb.h>
 #include <linux/input.h>
 #include <linux/module.h>
 #include <linux/kthread.h>
+
+/* Wake boost duration in milliseconds for all boostable devices.*/
 static unsigned int wake_boost_duration = 1000;
 module_param_named(devfreq_boost_wake_boost_duration, wake_boost_duration, uint, 0664);
+
+/* Input boost duration in milliseconds for all boostable devices.*/
 static unsigned int input_boost_duration = 1000;
 module_param_named(devfreq_boost_input_boost_duration, input_boost_duration, uint, 0664);
 
@@ -349,4 +363,14 @@ stop_kthreads:
 		kthread_stop(thread[i]);
 	return ret;
 }
-late_initcall(devfreq_boost_init);
+subsys_initcall(devfreq_boost_init);
+
+static void __exit devfreq_boost_exit(void)
+{
+	return;
+}
+module_exit(devfreq_boost_exit);
+
+
+MODULE_DESCRIPTION("Devfreq Boost");
+
