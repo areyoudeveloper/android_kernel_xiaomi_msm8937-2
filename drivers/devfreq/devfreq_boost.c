@@ -14,14 +14,21 @@ static unsigned int wake_boost_duration = 1000;
 module_param_named(devfreq_boost_wake_boost_duration, wake_boost_duration, uint, 0664);
 static unsigned int input_boost_duration = 1000;
 module_param_named(devfreq_boost_input_boost_duration, input_boost_duration, uint, 0664);
-int devfreq_boost() {
-if (wake_boost_duration < 0 || wake_boost_duration > 1000)
+
+int devfreq_boost(int wake, int input) {
+
+    wake = wake_boost_duration;
+    input = input_boost_duration
+    
+    if (wake < 0 || wake > 1000)
 		wake_boost_duration = 500;
 
-	if (input_boost_duration < 0 || input_boost_duration > 1000)
+	if (input < 0 || input > 1000)
 		input_boost_duration = 150;
-};
+}
+
 EXPORT_SYMBOL(devfreq_boost);
+
 enum {
 	SCREEN_OFF,
 	INPUT_BOOST,
