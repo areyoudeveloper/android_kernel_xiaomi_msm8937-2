@@ -107,7 +107,7 @@ static void __devfreq_boost_kick(struct boost_dev *b)
 void devfreq_boost_kick(enum df_device device)
 {
 	struct df_boost_drv *d = &df_boost_drv_g;
-	printk(KERN_INFO "Devfreq_boost:devfreq_boost_kicked %s\n", devices);
+	printk(KERN_DEBUG "Devfreq_boost:devfreq_boost_kicked %s\n", device);
 	__devfreq_boost_kick(d->devices + device);
 }
 
