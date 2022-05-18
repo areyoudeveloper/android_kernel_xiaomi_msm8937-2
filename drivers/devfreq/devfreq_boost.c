@@ -38,13 +38,13 @@ int devfreq_boost(int wake, int input, size_t count) {
 		wake_boost_duration = 500;
 	
 	if (wake_boost_duration != wake)
-	        printk(KERN_INFO "Devfreq_boost wake_boost_duration changed to %s\n", wake_boost_duration);
+	        printk(KERN_INFO "wake_boost_duration changed to %d\n", wake_boost_duration);
 	
 	if (input < 0 || input > 1000)
 		input_boost_duration = 150;
 		
 	if (input_boost_duration != input)
-	    	printk(KERN_INFO "Devfreq_boost input_boost_duration changed to %s\n", input_boost_duration);
+	    	printk(KERN_INFO "input_boost_duration changed to %d\n", input_boost_duration);
 	
      
     return count;
@@ -107,7 +107,7 @@ static void __devfreq_boost_kick(struct boost_dev *b)
 void devfreq_boost_kick(enum df_device device)
 {
 	struct df_boost_drv *d = &df_boost_drv_g;
-	printk(KERN_DEBUG "Devfreq_boost:devfreq_boost_kicked %s\n", device);
+	printk(KERN_DEBUG "devfreq_boost_kicked %u\n", device);
 	__devfreq_boost_kick(d->devices + device);
 }
 
@@ -134,6 +134,8 @@ static void __devfreq_boost_kick_max(struct boost_dev *b,
 	if (!mod_delayed_work(system_unbound_wq, &b->max_unboost,
 			      boost_jiffies))
 		wake_up(&b->boost_waitq);
+	
+	pr_debug("boost kick max Trigered%u\n", duration_ms);
 }
 
 void devfreq_boost_kick_max(enum df_device device, unsigned int duration_ms)
