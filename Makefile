@@ -863,8 +863,8 @@ endif
 KBUILD_CFLAGS	+= $(call cc-option,-march=armv8-a+crypto+crc,) $(call cc-option,-mcpu=cortex-a53+crypto+crc,)
 
 # Cortex-A53 optimizations
-arch-$(CONFIG_ARCH_MSM8937)	:= $(call cc-option,-mcpu=cortex-a53+crc+crypto,-march=armv8-a+crc+crypto)
-tune-$(CONFIG_ARCH_MSM8937)	:= -mtune=cortex-a53
+arch-y	:= $(call cc-option,-mcpu=cortex-a53+crc+crypto,-march=armv8-a+crc+crypto)
+tune-y	:= -mtune=cortex-a53
 
 KBUILD_CFLAGS	+= $(arch-y) $(tune-y)
 KBUILD_AFLAGS	+= $(arch-y) $(tune-y)
