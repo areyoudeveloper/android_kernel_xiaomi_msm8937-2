@@ -15,6 +15,6 @@ cp anykernel/anykernel.sh $ak_dir
 cp -rf $image $ak_dir/
 cd $ak_dir
 
-zip -r9 ${pre}_QuartzCrystal4.9_${model}_${fmt}.zip *
+zip -r9 ${pre}_exp-QuartzCrystal4.9_${model}_${fmt}.zip *
 mv *.zip ../../
 cd ../../
