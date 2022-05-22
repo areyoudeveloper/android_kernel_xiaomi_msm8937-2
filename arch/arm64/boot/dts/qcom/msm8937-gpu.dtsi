@@ -52,7 +52,7 @@
 		qcom,id = <0>;
 		qcom,chipid = <0x05000500>;
 
-        qcom,initial-pwrlevel = <8>;
+                qcom,initial-pwrlevel = <8>;
 
         
 
@@ -188,8 +188,8 @@
 
 			/* NOM */
 			qcom,gpu-pwrlevel@2 {
-                reg = <2>;
-			    qcom,gpu-freq = <650000000>;
+                                reg = <2>;
+			        qcom,gpu-freq = <650000000>;
 				qcom,bus-freq = <10>;
 				qcom,bus-min = <10>;
 				qcom,bus-max = <10>;
