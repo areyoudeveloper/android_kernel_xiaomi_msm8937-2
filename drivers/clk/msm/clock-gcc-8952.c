@@ -482,7 +482,7 @@ static struct alpha_pll_clk gpll3_clk_src = {
 		.parent = &xo_clk_src.c,
 		.dbg_name = "gpll3_clk_src",
 		.ops = &clk_ops_dyna_alpha_pll,
-		VDD_DIG_FMAX_MAP1(NOMINAL, 1400000000),
+		VDD_DIG_FMAX_MAP1(NOMINAL, 1300000000),
 		CLK_INIT(gpll3_clk_src.c),
 	},
 };
@@ -743,12 +743,9 @@ static struct clk_freq_tbl ftbl_gcc_oxili_gfx3d_clk[] = {
 	F_SLEW( 240000000, FIXED_CLK_SRC, gpll6_aux,	4.5,	0,	0),
 	F_SLEW( 266670000, FIXED_CLK_SRC, gpll0,	3,	0,	0),
 	F_SLEW( 400000000, FIXED_CLK_SRC, gpll0,	2,	0,	0),
-	F_SLEW( 450000000, 930000000,	  gpll3,	1,	0,	0),
-        F_SLEW( 510000000, 1020000000,	  gpll3,	1,	0,	0),
-	F_SLEW( 560000000, 1120000000,	  gpll3,	1,	0,	0),
-	F_SLEW( 650000000, 1300000000,	  gpll3,	1,	0,	0),
-        F_SLEW( 700000000, 1400000000,    gpll3,        1,      0,      0),
-	F_SLEW( 725000000, 1450000000,    gpll3,        1,      0,      0),
+	F_SLEW( 465000000, 930000000,	  gpll3,	1,	0,	0),
+	F_SLEW( 500000000, 1000000000,	  gpll3,	1,	0,	0),
+	F_SLEW( 550000000, 1100000000,	  gpll3,	1,	0,	0),
 	F_END
 };
 
@@ -770,7 +767,7 @@ static struct clk_freq_tbl ftbl_gcc_oxili_gfx3d_clk_8937[] = {
 	F_SLEW( 400000000, FIXED_CLK_SRC, gpll0,	2,	0,	0),
 	F_SLEW( 450000000, 900000000,	  gpll3,	1,	0,	0),
 	F_SLEW( 510000000, 1020000000,	  gpll3,	1,	0,	0),
-	F_SLEW( 560000000, 1120000000,	  gpll3,	1,	0,	0),
+	F_SLEW( 560000000, 1196000000,	  gpll3,	1,	0,	0),
 	F_SLEW( 650000000, 1300000000,	  gpll3,	1,	0,	0),
 	F_END
 };
@@ -793,7 +790,7 @@ static struct clk_freq_tbl ftbl_gcc_oxili_gfx3d_clk_sdm439[] = {
 	F_SLEW( 400000000, FIXED_CLK_SRC, gpll0,	2,	0,	0),
 	F_SLEW( 450000000, 900000000,	  gpll3,	1,	0,	0),
 	F_SLEW( 510000000, 1020000000,	  gpll3,	1,	0,	0),
-	F_SLEW( 560000000, 1120000000,	  gpll3,	1,	0,	0),
+	F_SLEW( 560000000, 1196000000,	  gpll3,	1,	0,	0),
 	F_SLEW( 650000000, 1300000000,	  gpll3,	1,	0,	0),
 	F_END
 };
@@ -816,7 +813,7 @@ static struct clk_freq_tbl ftbl_gcc_oxili_gfx3d_clk_8937_475MHz[] = {
 	F_SLEW( 400000000, FIXED_CLK_SRC, gpll0,	2,	0,	0),
 	F_SLEW( 450000000, 900000000,	  gpll3,	1,	0,	0),
 	F_SLEW( 510000000, 1020000000,	  gpll3,	1,	0,	0),
-	F_SLEW( 560000000, 1120000000,	  gpll3,	1,	0,	0),
+	F_SLEW( 560000000, 1196000000,	  gpll3,	1,	0,	0),
 	F_SLEW( 650000000, 1300000000,	  gpll3,	1,	0,	0),
 	F_END
 };
@@ -839,7 +836,7 @@ static struct clk_freq_tbl ftbl_gcc_oxili_gfx3d_clk_8940_500MHz[] = {
 	F_SLEW( 400000000, FIXED_CLK_SRC, gpll0,	2,	0,	0),
 	F_SLEW( 450000000, 900000000,	  gpll3,	1,	0,	0),
 	F_SLEW( 510000000, 1020000000,	  gpll3,	1,	0,	0),
-	F_SLEW( 560000000, 1120000000,	  gpll3,	1,	0,	0),
+	F_SLEW( 560000000, 1196000000,	  gpll3,	1,	0,	0),
 	F_SLEW( 650000000, 1300000000,	  gpll3,	1,	0,	0),
 	F_END
 };
@@ -4323,7 +4320,7 @@ static void override_for_8937(int speed_bin)
 	gpll3_clk_src.c.rate = 900000000;
 	gpll3_clk_src.vco_tbl = p_vco_8937;
 	gpll3_clk_src.num_vco = ARRAY_SIZE(p_vco_8937);
-	OVERRIDE_FMAX2(gpll3, LOW, 800000000, NOMINAL, 1066000000);
+	OVERRIDE_FMAX2(gpll3, LOW, 800000000, NOMINAL, 1300000000);
 
 	OVERRIDE_FMAX1(cci, LOWER, 37500000);
 	OVERRIDE_FMAX3(csi0,
@@ -4556,7 +4553,7 @@ static int msm_gcc_probe(struct platform_device *pdev)
 			gpll3_clk_src.vco_tbl = p_vco;
 			gpll3_clk_src.num_vco = ARRAY_SIZE(p_vco);
 			gpll3_clk_src.c.fmax[VDD_DIG_LOW] = 800000000;
-			gpll3_clk_src.c.fmax[VDD_DIG_NOMINAL] = 1400000000;
+			gpll3_clk_src.c.fmax[VDD_DIG_NOMINAL] = 1300000000;
 			gfx3d_clk_src.freq_tbl =
 					ftbl_gcc_oxili_gfx3d_clk_sdm439;
 
