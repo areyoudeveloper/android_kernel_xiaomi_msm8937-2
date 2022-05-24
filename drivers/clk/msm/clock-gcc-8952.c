@@ -457,7 +457,7 @@ static struct alpha_pll_vco_tbl p_vco[] = {
  * Hence will have only one vco table entry
  */
 static struct alpha_pll_vco_tbl p_vco_8937[] = {
-	VCO(1,  525000000, 1400000000),
+	VCO(1,  525000000, 1250000000),
 };
 
 static struct alpha_pll_clk gpll3_clk_src = {
@@ -768,7 +768,7 @@ static struct clk_freq_tbl ftbl_gcc_oxili_gfx3d_clk_8937[] = {
 	F_SLEW( 450000000, 900000000,	  gpll3,	1,	0,	0),
 	F_SLEW( 510000000, 1020000000,	  gpll3,	1,	0,	0),
 	F_SLEW( 560000000, 1120000000,	  gpll3,	1,	0,	0),
-	F_SLEW( 650000000, 1300000000,	  gpll3,	1,	0,	0),
+	F_SLEW( 650000000, 1250000000,	  gpll3,	1,	0,	0),
 	F_END
 };
 
@@ -791,7 +791,7 @@ static struct clk_freq_tbl ftbl_gcc_oxili_gfx3d_clk_sdm439[] = {
 	F_SLEW( 450000000, 900000000,	  gpll3,	1,	0,	0),
 	F_SLEW( 510000000, 1020000000,	  gpll3,	1,	0,	0),
 	F_SLEW( 560000000, 1120000000,	  gpll3,	1,	0,	0),
-	F_SLEW( 650000000, 1300000000,	  gpll3,	1,	0,	0),
+	F_SLEW( 650000000, 1250000000,	  gpll3,	1,	0,	0),
 	F_END
 };
 
@@ -814,7 +814,7 @@ static struct clk_freq_tbl ftbl_gcc_oxili_gfx3d_clk_8937_475MHz[] = {
 	F_SLEW( 450000000, 900000000,	  gpll3,	1,	0,	0),
 	F_SLEW( 510000000, 1020000000,	  gpll3,	1,	0,	0),
 	F_SLEW( 560000000, 1120000000,	  gpll3,	1,	0,	0),
-	F_SLEW( 650000000, 1300000000,	  gpll3,	1,	0,	0),
+	F_SLEW( 650000000, 1250000000,	  gpll3,	1,	0,	0),
 	F_END
 };
 
@@ -837,7 +837,7 @@ static struct clk_freq_tbl ftbl_gcc_oxili_gfx3d_clk_8940_500MHz[] = {
 	F_SLEW( 450000000, 900000000,	  gpll3,	1,	0,	0),
 	F_SLEW( 510000000, 1020000000,	  gpll3,	1,	0,	0),
 	F_SLEW( 560000000, 1120000000,	  gpll3,	1,	0,	0),
-	F_SLEW( 650000000, 1300000000,	  gpll3,	1,	0,	0),
+	F_SLEW( 650000000, 1250000000,	  gpll3,	1,	0,	0),
 	F_END
 };
 
