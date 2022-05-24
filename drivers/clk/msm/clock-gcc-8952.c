@@ -450,14 +450,14 @@ static struct alpha_pll_masks pll_masks_p = {
  * Hence will have only one vco table entry
  */
 static struct alpha_pll_vco_tbl p_vco[] = {
-	VCO(1,  700000000, 1400000000),
+	VCO(0,  700000000, 1400000000),
 };
 
 /* Slewing plls won't allow to change vco_sel.
  * Hence will have only one vco table entry
  */
 static struct alpha_pll_vco_tbl p_vco_8937[] = {
-	VCO(0,  525000000, 1400000000),
+	VCO(1,  525000000, 1400000000),
 };
 
 static struct alpha_pll_clk gpll3_clk_src = {
