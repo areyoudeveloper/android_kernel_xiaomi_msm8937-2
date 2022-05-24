@@ -1161,7 +1161,7 @@ static struct alpha_pll_masks masks_20nm_t = {
 };
 
 static struct alpha_pll_vco_tbl vco_20nm_t[] = {
-	VCO(0, 500000000, 1300000000),
+	VCO(0, 500000000, 1250000000),
 };
 
 static struct alpha_pll_clk *alpha_pll_dt_parser(struct device *dev,
