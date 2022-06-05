@@ -10,11 +10,11 @@ rm -rf anykernel3
 mkdir -p $ak_dir 
 git clone --depth=1 https://github.com/osm0sis/AnyKernel3 $ak_dir
 rm $ak_dir/anykernel.sh
-cp anykernel/anykernel.sh $ak_dir
-
+cp -f anykernel/anykernel.sh $ak_dir
+cp -f anykernel/ak3-core.sh $ak_dir/tools/
 cp -rf $image $ak_dir/
 cd $ak_dir
 
-zip -r9 ${pre}_QuartzCrystal4.9_${model}_${fmt}.zip *
+zip -r9 ${pre}_QuartzCrystal-4.9_${model}_${fmt}.zip *
 mv *.zip ../../
 cd ../../
