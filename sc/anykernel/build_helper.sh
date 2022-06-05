@@ -40,6 +40,6 @@ make	\
 	CROSS_COMPILE="aarch64-linux-gnu-" \
 	CROSS_COMPILE_ARM32="arm-linux-gnueabi-" \
 	CONFIG_DEBUG_SECTION_MISMATCH=y \
-	CONFIG_NO_ERROR_ON_MISMATCH=y \
+	CONFIG_NO_ERROR_ON_MISMATCH=y -j $(nproc)\
 	$1 $2 $3 || exit
 }
