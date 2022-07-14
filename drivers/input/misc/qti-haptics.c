@@ -515,11 +515,11 @@ static int qti_haptics_config_vmax(struct qti_hap_chip *chip, int vmax_mv)
 
 	addr = REG_HAP_VMAX_CFG;
 	mask = HAP_VMAX_MV_MASK;
-	if(vmax_mv_override) {
-		if(vmax_mv_override > HAP_VMAX_MV_MAX)
+	if (vmax_mv_override) 
+		if (vmax_mv_override > HAP_VMAX_MV_MAX) 
 			vmax_mv_override = HAP_VMAX_MV_MAX;
-		vmax_mv = vmax_mv_override;
-	}
+			vmax_mv = vmax_mv_override;
+	
 	val = (vmax_mv / HAP_VMAX_MV_LSB) << HAP_VMAX_MV_SHIFT;
 	rc = qti_haptics_masked_write(chip, addr, mask, val);
 	if (rc < 0)
