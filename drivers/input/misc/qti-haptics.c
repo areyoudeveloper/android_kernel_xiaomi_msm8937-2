@@ -507,6 +507,8 @@ static int qti_haptics_module_en(struct qti_hap_chip *chip, bool en)
 }
 static int vmax_mv_override = 0;
 module_param_named(vmax_mv_override, vmax_mv_override, int, 0664);
+static int vmax_mv_enable = 1;
+module_param_named(vmax_mv_enable, vmax_mv_enable, int, 0664);
 
 static int qti_haptics_config_vmax(struct qti_hap_chip *chip, int vmax_mv)
 {
