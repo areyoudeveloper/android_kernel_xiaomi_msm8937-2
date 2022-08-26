@@ -1142,9 +1142,9 @@ check_bss:
 		roam_info.resp_ie = pmlmepriv->assoc_rsp + sizeof(struct rtw_ieee80211_hdr_3addr) + 6;
 		roam_info.resp_ie_len = pmlmepriv->assoc_rsp_len - sizeof(struct rtw_ieee80211_hdr_3addr) - 6;
 
-		cfg80211_roamed(padapter->pnetdev, &roam_info, GFP_ATOMIC);
+		cfg80211_roam_info(padapter->pnetdev, &roam_info, GFP_ATOMIC);
 		#else
-		cfg80211_roamed(padapter->pnetdev
+		cfg80211_roam_info(padapter->pnetdev
 			#if LINUX_VERSION_CODE > KERNEL_VERSION(2, 6, 39) || defined(COMPAT_KERNEL_RELEASE)
 			, notify_channel
 			#endif
