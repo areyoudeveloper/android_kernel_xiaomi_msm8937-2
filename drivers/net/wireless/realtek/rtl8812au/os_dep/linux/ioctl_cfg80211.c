@@ -1144,8 +1144,8 @@ check_bss:
 
 		cfg80211_roamed(padapter->pnetdev, &roam_info, GFP_ATOMIC);
 		#else
-		struct cfg80211_roam_info;
-		cfg80211_roam_info(padapter->pnetdev
+		struct cfg80211_roam_info cfgrinfo;
+		cfgrinfo(padapter->pnetdev
 			#if LINUX_VERSION_CODE > KERNEL_VERSION(2, 6, 39) || defined(COMPAT_KERNEL_RELEASE)
 			, notify_channel
 			#endif
