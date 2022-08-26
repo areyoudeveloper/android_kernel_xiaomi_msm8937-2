@@ -5482,6 +5482,12 @@ struct cfg80211_roam_info {
 	bool authorized;
 };
 
+void cfg80211_roamed_special(struct net_device *dev,
+		     struct ieee80211_channel *channel,
+		     const u8 *bssid,
+		     const u8 *req_ie, size_t req_ie_len,
+		     const u8 *resp_ie, size_t resp_ie_len, gfp_t gfp);
+
 /**
  * cfg80211_roamed - notify cfg80211 of roaming
  *
