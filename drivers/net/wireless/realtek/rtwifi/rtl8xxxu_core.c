@@ -1157,7 +1157,6 @@ void rtl8xxxu_gen1_config_channel(struct ieee80211_hw *hw)
 	switch (hw->conf.chandef.width) {
 	case NL80211_CHAN_WIDTH_20_NOHT:
 		ht = false;
-		fallthrough;
 	case NL80211_CHAN_WIDTH_20:
 		opmode |= BW_OPMODE_20MHZ;
 		rtl8xxxu_write8(priv, REG_BW_OPMODE, opmode);
@@ -1284,7 +1283,6 @@ void rtl8xxxu_gen2_config_channel(struct ieee80211_hw *hw)
 	switch (hw->conf.chandef.width) {
 	case NL80211_CHAN_WIDTH_20_NOHT:
 		ht = false;
-		fallthrough;
 	case NL80211_CHAN_WIDTH_20:
 		rf_mode_bw |= WMAC_TRXPTCL_CTL_BW_20;
 		subchannel = 0;
@@ -1740,13 +1738,11 @@ static int rtl8xxxu_identify_chip(struct rtl8xxxu_priv *priv)
 	if (val16 & NORMAL_SIE_EP_TX_HIGH_MASK) {
 		priv->ep_tx_high_queue = 1;
 		priv->ep_tx_count++;
-		fallthrough;
 	}
 
 	if (val16 & NORMAL_SIE_EP_TX_NORMAL_MASK) {
 		priv->ep_tx_normal_queue = 1;
 		priv->ep_tx_count++;
-		fallthrough;
 	}
 
 	if (val16 & NORMAL_SIE_EP_TX_LOW_MASK) {
@@ -1763,11 +1759,9 @@ static int rtl8xxxu_identify_chip(struct rtl8xxxu_priv *priv)
 		case 3:
 			priv->ep_tx_low_queue = 1;
 			priv->ep_tx_count++;
-			fallthrough;
 		case 2:
 			priv->ep_tx_normal_queue = 1;
 			priv->ep_tx_count++;
-			fallthrough;
 		case 1:
 			priv->ep_tx_high_queue = 1;
 			priv->ep_tx_count++;
@@ -5081,7 +5075,7 @@ static void rtl8xxxu_tx(struct ieee80211_hw *hw,
 	if (control && control->sta)
 		sta = control->sta;
 
-	tx_desc = skb_push(skb, tx_desc_size);
+	tx_desc = (struct rtl8xxxu_txdesc32 *)skb_push(skb, tx_desc_size);
 
 	memset(tx_desc, 0, tx_desc_size);
 	tx_desc->pkt_size = cpu_to_le16(pktlen);
@@ -5911,7 +5905,7 @@ rtl8xxxu_ampdu_action(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
 		dev_dbg(dev,
 			"Changed HT: ampdu_factor %02x, ampdu_density %02x\n",
 			ampdu_factor, ampdu_density);
-		return IEEE80211_AMPDU_TX_START_IMMEDIATE;
+		break;
 	case IEEE80211_AMPDU_TX_STOP_CONT:
 	case IEEE80211_AMPDU_TX_STOP_FLUSH:
 	case IEEE80211_AMPDU_TX_STOP_FLUSH_CONT:

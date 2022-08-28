@@ -662,10 +662,9 @@ static int rtl8192eu_parse_efuse(struct rtl8xxxu_priv *priv)
 	 * length is not 0.
 	 */
 	record_offset = 0;
-	rtl8192eu_log_next_device_info(priv, "Vendor", efuse->device_info, &record_offset);
-	rtl8192eu_log_next_device_info(priv, "Product", efuse->device_info, &record_offset);
-	rtl8192eu_log_next_device_info(priv, "Serial", efuse->device_info, &record_offset);
-
+	dev_info(&priv->udev->dev, "Vendor: %.7s\n", efuse->vendor_name);
+	dev_info(&priv->udev->dev, "Product: %.11s\n", efuse->device_name);
+	dev_info(&priv->udev->dev, "Serial: %.11s\n", efuse->serial);
 	if (rtl8xxxu_debug & RTL8XXXU_DEBUG_EFUSE) {
 		unsigned char *raw = priv->efuse_wifi.raw;
 
