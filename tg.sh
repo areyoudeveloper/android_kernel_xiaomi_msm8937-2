@@ -90,7 +90,6 @@ chmod +x sc/*.sh
 cp -rf sc/* .
 chmod +x build_kernel.sh
 ./build_kernel.sh g
-export com=$(git log)
 export OWO=$(ls *.zip)
 
 if [ -f "$OWO" ]; then
