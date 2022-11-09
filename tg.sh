@@ -78,7 +78,6 @@ export TIME=$(date +"%S-%F")
 # git clone --depth=1 --single-branch https://github.com/AOSPA/android_prebuilts_gcc_linux-x86_aarch64_aarch64-elf -b master gcc
 # git clone --depth=1 --single-branch https://github.com/HANA-CI-Build-Project/proton-clang -b master clang 
 # git clone --depth=1 https://github.com/KudProject/prebuilts_clang_host_linux-x86 clang
-# echo "Cloning dependencies"
 # git clone --depth=1 https://github.com/KudProject/prebuilts_clang_host_linux-x86 clang
 # git clone --depth=1 https://github.com/KudProject/arm-linux-androideabi-4.9 gcc32
 # git clone --depth=1 https://github.com/KudProject/aarch64-linux-android-4.9 gcc
