@@ -13,7 +13,7 @@ make O=out ARCH=arm64 final_defconfig
 [[ $2 != 'dtb' ]] && pcmake -j 20 || pcmake dtbs
 
 DIFF=$(($(date +"%s") - $BUILD_START))
-echo -e "\nBuild completed in $(($DIFF / 60)) minute(s) and $(($DIFF % 60)) seconds."
+echo -e "\nBuild succeeded in $(($DIFF / 60)) minute(s) and $(($DIFF % 60)) seconds."
 
 [[ $2 != 'dtb' ]] && ./anykernel/build_zip.sh 
 
