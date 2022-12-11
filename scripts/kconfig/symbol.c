@@ -1107,6 +1107,7 @@ static void sym_check_print_recursive(struct symbol *last_sym)
 	for (stack = check_top; stack != NULL; stack = stack->prev)
 		if (stack->sym == last_sym)
 			break;
+  
 	if (!stack) {
 		fprintf(stderr, "unexpected recursive dependency error\n");
 		return;
@@ -1130,6 +1131,7 @@ static void sym_check_print_recursive(struct symbol *last_sym)
 		if (stack->sym == last_sym) {
 			fprintf(stderr, "%s:%d:error: recursive dependency detected!\n",
 				prop->file->name, prop->lineno);
+		}		
 		if (stack->expr) {
 			fprintf(stderr, "%s:%d:\tsymbol %s %s value contains %s\n",
 				prop->file->name, prop->lineno,
