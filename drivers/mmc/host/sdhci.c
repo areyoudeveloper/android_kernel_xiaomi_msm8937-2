@@ -2006,7 +2006,7 @@ static void sdhci_set_ios(struct mmc_host *mmc, struct mmc_ios *ios)
 	bool reinit_uhs = host->reinit_uhs;
 	bool turning_on_clk = false;
 	unsigned long flags;
-	u8 ctrl:
+	u8 ctrl;
 	int ret;
 
 	host->reinit_uhs = false;
