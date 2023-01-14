@@ -2,6 +2,11 @@ clone:
   depth: 50
 kind: pipeline
 name: pipe
+
+platform:
+  os: linux
+  arch: amd64
+  
 steps:
   - name: build
     image: ubuntu:latest
