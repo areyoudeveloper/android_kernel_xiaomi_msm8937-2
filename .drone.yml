@@ -1,5 +1,5 @@
 clone:
-  depth: 1
+  depth: 50
 kind: pipeline
 name: pipe
 steps:
