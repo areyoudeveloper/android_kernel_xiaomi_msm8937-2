@@ -1,5 +1,5 @@
 clone:
-  depth: 50
+  depth: 1
 kind: pipeline
 name: pipe
 
@@ -9,7 +9,7 @@ platform:
   
 steps:
   - name: build
-    image: ubuntu:latest
+    image: ubuntu/21.04
     environment:
       TOKEN:
        from_secret: token_id
